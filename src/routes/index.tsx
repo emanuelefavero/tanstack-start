@@ -1,6 +1,7 @@
 import { createFileRoute, useRouter } from '@tanstack/react-router'
 import { createServerFn } from '@tanstack/react-start'
 import * as fs from 'node:fs'
+import { useState } from 'react'
 
 const filePath = 'count.txt'
 
@@ -28,25 +29,45 @@ const updateCount = createServerFn({ method: 'POST' })
 // * Route
 export const Route = createFileRoute('/')({
   component: Home,
-  loader: async () => await getCount(),
+  loader: async () => {
+    const count = await getCount()
+
+    return {
+      count,
+    }
+  },
 })
 
 // * Route Component
 function Home() {
   const router = useRouter()
-  const state = Route.useLoaderData()
+
+  // Server Counter
+  const { count } = Route.useLoaderData()
+
+  // Client Counter
+  const [clientCount, setClientCount] = useState(0)
 
   return (
-    <button
-      className='cursor-pointer rounded-full border border-blue-300 bg-blue-200 px-2.5 py-1 font-semibold text-blue-800 transition-transform duration-200 hover:bg-blue-800 hover:text-blue-200 active:scale-95'
-      type='button'
-      onClick={() => {
-        updateCount({ data: 1 }).then(() => {
-          router.invalidate()
-        })
-      }}
-    >
-      Add 1 to {state}?
-    </button>
+    <>
+      <h1 className='text-2xl font-bold'>TanStack Start - Counter Example</h1>
+
+      <p className='mt-2'>Server Counter: {count}</p>
+      <p className='mt-1'>Client Counter: {clientCount}</p>
+
+      <button
+        className='mt-2 cursor-pointer rounded-full border border-blue-300 bg-blue-200 px-2.5 py-1 font-semibold text-blue-800 transition-transform duration-200 hover:bg-blue-800 hover:text-blue-200 active:scale-95'
+        type='button'
+        onClick={() => {
+          updateCount({ data: 1 }).then(() => {
+            router.invalidate()
+          })
+
+          setClientCount((c) => c + 1)
+        }}
+      >
+        Add
+      </button>
+    </>
   )
 }
