@@ -48,6 +48,10 @@ function Home() {
   // Client Counter
   const [clientCount, setClientCount] = useState(0)
 
+  // TODO Add shared button component (extend ComponentProps<"button"> or ComponentPropsWithRef<"button"> or ComponentPropsWithoutRef<"button"> or React.ButtonHTMLAttributes<HTMLButtonElement>)
+  // TODO Add ClientCounter component
+  // TODO Add ServerCounter component that uses getCount and updateCount
+
   return (
     <>
       <h1 className='text-2xl font-bold'>TanStack Start - Counter Example</h1>
