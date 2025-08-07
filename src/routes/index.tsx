@@ -38,6 +38,7 @@ function Home() {
 
   return (
     <button
+      className='cursor-pointer rounded-full border border-blue-300 bg-blue-200 px-2.5 py-1 font-semibold text-blue-800 transition-transform duration-200 hover:bg-blue-800 hover:text-blue-200 active:scale-95'
       type='button'
       onClick={() => {
         updateCount({ data: 1 }).then(() => {

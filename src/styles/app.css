@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+
+@layer base {
+  :root {
+    --background: oklch(97% 0.014 254.604);
+    --foreground: oklch(28.2% 0.091 267.935);
+
+    @media (prefers-color-scheme: dark) {
+      --background: oklch(12.9% 0.042 264.695);
+      --foreground: oklch(93.2% 0.032 255.585);
+    }
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: system-ui, Inter, Helvetica, Roboto, sans-serif;
+    padding: 1rem;
+  }
+}
