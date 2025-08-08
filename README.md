@@ -13,3 +13,15 @@ This repository is a playground for TanStack Start. Feel free to use it to test 
 ## Resources
 
 - [TanStack Start Documentation](https://tanstack.com/start/latest)
+
+## License
+
+- [MIT](LICENSE.md)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+[**Go To Top &nbsp; ⬆️**](#tanstack-start)
