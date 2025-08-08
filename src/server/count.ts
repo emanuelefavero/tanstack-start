@@ -3,9 +3,7 @@ import * as fs from 'node:fs'
 import { filePath } from '~/config/counter'
 import { readCount } from '~/utils/counter'
 
-export const getCount = createServerFn({
-  method: 'GET',
-}).handler(() => {
+export const getCount = createServerFn({ method: 'GET' }).handler(() => {
   return readCount()
 })
 
