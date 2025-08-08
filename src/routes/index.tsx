@@ -2,6 +2,7 @@ import { createFileRoute, useRouter } from '@tanstack/react-router'
 import { createServerFn } from '@tanstack/react-start'
 import * as fs from 'node:fs'
 import { useState } from 'react'
+import Button from '~/components/shared/Button'
 
 const filePath = 'count.txt'
 
@@ -48,7 +49,6 @@ function Home() {
   // Client Counter
   const [clientCount, setClientCount] = useState(0)
 
-  // TODO Add shared button component (extend ComponentProps<"button">)
   // TODO Add ClientCounter component
   // TODO Add ServerCounter component that uses getCount and updateCount
 
@@ -59,9 +59,7 @@ function Home() {
       <p className='mt-2'>Server Counter: {count}</p>
       <p className='mt-1'>Client Counter: {clientCount}</p>
 
-      <button
-        className='mt-2 cursor-pointer rounded-full border border-blue-300 bg-blue-200 px-2.5 py-1 font-semibold text-blue-800 transition-transform duration-200 hover:bg-blue-800 hover:text-blue-200 active:scale-95'
-        type='button'
+      <Button
         onClick={() => {
           updateCount({ data: 1 }).then(() => {
             router.invalidate()
@@ -71,7 +69,7 @@ function Home() {
         }}
       >
         Add
-      </button>
+      </Button>
     </>
   )
 }
