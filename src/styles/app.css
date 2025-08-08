@@ -4,10 +4,12 @@
   :root {
     --background: oklch(97% 0.014 254.604);
     --foreground: oklch(28.2% 0.091 267.935);
+    --primary: oklch(48.8% 0.243 264.376);
 
     @media (prefers-color-scheme: dark) {
       --background: oklch(12.9% 0.042 264.695);
       --foreground: oklch(93.2% 0.032 255.585);
+      --primary: oklch(70.7% 0.165 254.624);
     }
   }
 
@@ -16,5 +18,15 @@
     color: var(--foreground);
     font-family: system-ui, Inter, Helvetica, Roboto, sans-serif;
     padding: 1rem;
+  }
+
+  a {
+    color: var(--primary);
+    font-weight: 500;
+    text-underline-offset: 0.25rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
