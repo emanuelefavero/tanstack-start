@@ -37,6 +37,9 @@ export const Route = createFileRoute('/counter/')({
   },
 })
 
+// TODO split client counter and server counter into separate components
+// TODO refactor code in this file and put server functions and utility functions in separate files
+
 // * Route Component
 function RouteComponent() {
   const router = useRouter()
