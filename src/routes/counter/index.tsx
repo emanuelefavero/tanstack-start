@@ -1,29 +1,7 @@
-import { createFileRoute, Link, useRouter } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
-import * as fs from 'node:fs'
-import { useState } from 'react'
-import Button from '~/components/shared/Button'
-
-const filePath = 'count.txt'
-
-async function readCount() {
-  return parseInt(
-    await fs.promises.readFile(filePath, 'utf-8').catch(() => '0'),
-  )
-}
-
-const getCount = createServerFn({
-  method: 'GET',
-}).handler(() => {
-  return readCount()
-})
-
-const updateCount = createServerFn({ method: 'POST' })
-  .validator((d: number) => d)
-  .handler(async ({ data }) => {
-    const count = await readCount()
-    await fs.promises.writeFile(filePath, `${count + data}`)
-  })
+import { createFileRoute, Link } from '@tanstack/react-router'
+import ClientCounter from '~/components/counter/ClientCounter'
+import ServerCounter from '~/components/counter/ServerCounter'
+import { getCount } from '~/server/count'
 
 // * Route
 export const Route = createFileRoute('/counter/')({
@@ -37,45 +15,17 @@ export const Route = createFileRoute('/counter/')({
   },
 })
 
-// TODO split client counter and server counter into separate components
-// TODO refactor code in this file and put server functions and utility functions in separate files
-
 // * Route Component
 function RouteComponent() {
-  const router = useRouter()
-
-  // Server Counter
-  const { count } = Route.useLoaderData()
-
-  // Client Counter
-  const [clientCount, setClientCount] = useState(0)
+  // TIP: If you need to load the `count` data directly inside this route:
+  // const { count } = Route.useLoaderData()
 
   return (
     <>
       <Link to='/'>Home</Link>
 
-      <h1 className='text-2xl font-bold'>TanStack Start - Counter Example</h1>
-
-      <p className='mt-2'>Server Counter: {count}</p>
-      <Button
-        onClick={() => {
-          updateCount({ data: 1 }).then(() => {
-            router.invalidate()
-          })
-        }}
-      >
-        Add
-      </Button>
-
-      <p className='mt-1'>Client Counter: {clientCount}</p>
-
-      <Button
-        onClick={() => {
-          setClientCount((c) => c + 1)
-        }}
-      >
-        Add
-      </Button>
+      <ServerCounter />
+      <ClientCounter />
     </>
   )
 }
