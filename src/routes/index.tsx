@@ -48,7 +48,7 @@ function Home() {
   // Client Counter
   const [clientCount, setClientCount] = useState(0)
 
-  // TODO Add shared button component (extend ComponentProps<"button"> or ComponentPropsWithRef<"button"> or ComponentPropsWithoutRef<"button"> or React.ButtonHTMLAttributes<HTMLButtonElement>)
+  // TODO Add shared button component (extend ComponentProps<"button">)
   // TODO Add ClientCounter component
   // TODO Add ServerCounter component that uses getCount and updateCount
 
