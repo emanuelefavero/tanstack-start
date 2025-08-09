@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TestIndexRouteImport } from './routes/test/index'
 import { Route as ShoppingCartIndexRouteImport } from './routes/shopping-cart/index'
+import { Route as FirebasePostsIndexRouteImport } from './routes/firebase-posts/index'
 import { Route as CounterIndexRouteImport } from './routes/counter/index'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const ShoppingCartIndexRoute = ShoppingCartIndexRouteImport.update({
   path: '/shopping-cart/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FirebasePostsIndexRoute = FirebasePostsIndexRouteImport.update({
+  id: '/firebase-posts/',
+  path: '/firebase-posts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CounterIndexRoute = CounterIndexRouteImport.update({
   id: '/counter/',
   path: '/counter/',
@@ -38,12 +44,14 @@ const CounterIndexRoute = CounterIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/counter': typeof CounterIndexRoute
+  '/firebase-posts': typeof FirebasePostsIndexRoute
   '/shopping-cart': typeof ShoppingCartIndexRoute
   '/test': typeof TestIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/counter': typeof CounterIndexRoute
+  '/firebase-posts': typeof FirebasePostsIndexRoute
   '/shopping-cart': typeof ShoppingCartIndexRoute
   '/test': typeof TestIndexRoute
 }
@@ -51,20 +59,28 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/counter/': typeof CounterIndexRoute
+  '/firebase-posts/': typeof FirebasePostsIndexRoute
   '/shopping-cart/': typeof ShoppingCartIndexRoute
   '/test/': typeof TestIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/counter' | '/shopping-cart' | '/test'
+  fullPaths: '/' | '/counter' | '/firebase-posts' | '/shopping-cart' | '/test'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/counter' | '/shopping-cart' | '/test'
-  id: '__root__' | '/' | '/counter/' | '/shopping-cart/' | '/test/'
+  to: '/' | '/counter' | '/firebase-posts' | '/shopping-cart' | '/test'
+  id:
+    | '__root__'
+    | '/'
+    | '/counter/'
+    | '/firebase-posts/'
+    | '/shopping-cart/'
+    | '/test/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CounterIndexRoute: typeof CounterIndexRoute
+  FirebasePostsIndexRoute: typeof FirebasePostsIndexRoute
   ShoppingCartIndexRoute: typeof ShoppingCartIndexRoute
   TestIndexRoute: typeof TestIndexRoute
 }
@@ -92,6 +108,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShoppingCartIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/firebase-posts/': {
+      id: '/firebase-posts/'
+      path: '/firebase-posts'
+      fullPath: '/firebase-posts'
+      preLoaderRoute: typeof FirebasePostsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/counter/': {
       id: '/counter/'
       path: '/counter'
@@ -105,6 +128,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CounterIndexRoute: CounterIndexRoute,
+  FirebasePostsIndexRoute: FirebasePostsIndexRoute,
   ShoppingCartIndexRoute: ShoppingCartIndexRoute,
   TestIndexRoute: TestIndexRoute,
 }

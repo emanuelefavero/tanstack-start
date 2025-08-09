@@ -16,6 +16,9 @@ function Home() {
           <Link to='/counter'>Counter</Link>
         </li>
         <li>
+          <Link to='/firebase-posts'>Firebase Posts</Link>
+        </li>
+        <li>
           <Link to='/shopping-cart'>Shopping Cart</Link>
         </li>
       </ul>
