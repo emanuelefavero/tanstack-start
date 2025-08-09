@@ -2,7 +2,7 @@ import { getApps, initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyC0bVJ9Exgcy6wxyGybu7d8zyPWWAkSK3Q',
+  apiKey: import.meta.env.FIREBASE_API_KEY,
   authDomain: 'nextjs-firestore-db-df0dc.firebaseapp.com',
   projectId: 'nextjs-firestore-db-df0dc',
   storageBucket: 'nextjs-firestore-db-df0dc.firebasestorage.app',

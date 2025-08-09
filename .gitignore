@@ -143,7 +143,6 @@ vite.config.ts.timestamp-*
 # Tanstack Start
 .DS_Store
 .cache
-.env
 .vercel
 .output
 .nitro
