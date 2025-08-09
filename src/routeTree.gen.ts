@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TestIndexRouteImport } from './routes/test/index'
 import { Route as ShoppingCartIndexRouteImport } from './routes/shopping-cart/index'
 import { Route as CounterIndexRouteImport } from './routes/counter/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TestIndexRoute = TestIndexRouteImport.update({
+  id: '/test/',
+  path: '/test/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShoppingCartIndexRoute = ShoppingCartIndexRouteImport.update({
@@ -33,30 +39,34 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/counter': typeof CounterIndexRoute
   '/shopping-cart': typeof ShoppingCartIndexRoute
+  '/test': typeof TestIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/counter': typeof CounterIndexRoute
   '/shopping-cart': typeof ShoppingCartIndexRoute
+  '/test': typeof TestIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/counter/': typeof CounterIndexRoute
   '/shopping-cart/': typeof ShoppingCartIndexRoute
+  '/test/': typeof TestIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/counter' | '/shopping-cart'
+  fullPaths: '/' | '/counter' | '/shopping-cart' | '/test'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/counter' | '/shopping-cart'
-  id: '__root__' | '/' | '/counter/' | '/shopping-cart/'
+  to: '/' | '/counter' | '/shopping-cart' | '/test'
+  id: '__root__' | '/' | '/counter/' | '/shopping-cart/' | '/test/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CounterIndexRoute: typeof CounterIndexRoute
   ShoppingCartIndexRoute: typeof ShoppingCartIndexRoute
+  TestIndexRoute: typeof TestIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/test/': {
+      id: '/test/'
+      path: '/test'
+      fullPath: '/test'
+      preLoaderRoute: typeof TestIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shopping-cart/': {
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CounterIndexRoute: CounterIndexRoute,
   ShoppingCartIndexRoute: ShoppingCartIndexRoute,
+  TestIndexRoute: TestIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

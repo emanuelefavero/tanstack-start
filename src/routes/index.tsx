@@ -10,6 +10,9 @@ function Home() {
       <h1 className='text-2xl font-bold'>TanStack Start</h1>
       <ul>
         <li>
+          <Link to='/test'>Test</Link>
+        </li>
+        <li>
           <Link to='/counter'>Counter</Link>
         </li>
         <li>
