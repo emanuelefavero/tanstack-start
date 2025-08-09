@@ -1,6 +1,6 @@
 import { Link, useLocation } from '@tanstack/react-router'
 
-export default function Header() {
+export default function Component() {
   const location = useLocation()
   const isHome = location.pathname === '/'
 
