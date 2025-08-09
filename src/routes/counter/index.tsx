@@ -1,6 +1,5 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
-import ClientCounter from '~/components/counter/ClientCounter'
-import ServerCounter from '~/components/counter/ServerCounter'
+import { createFileRoute } from '@tanstack/react-router'
+import Counter from '~/components/Counter/Counter'
 import { getCount } from '~/server/count'
 
 // * Route
@@ -22,8 +21,7 @@ function RouteComponent() {
 
   return (
     <>
-      <ServerCounter />
-      <ClientCounter />
+      <Counter />
     </>
   )
 }
