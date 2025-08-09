@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import Counter from '~/components/Counter/Counter'
 import { getCount } from '~/server/count'
+import ClientCounter from './-components/ClientCounter'
+import ServerCounter from './-components/ServerCounter'
 
 export const Route = createFileRoute('/counter/')({
   component: RouteComponent,
@@ -21,7 +22,8 @@ function RouteComponent() {
 
   return (
     <>
-      <Counter />
+      <ClientCounter />
+      <ServerCounter />
     </>
   )
 }
