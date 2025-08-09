@@ -11,7 +11,7 @@ export const Route = createFileRoute('/')({
 function Home() {
   return (
     <>
-      <h1 className='text-2xl font-bold'>Home</h1>
+      <h1 className='text-2xl font-bold'>TanStack Start</h1>
       <ul>
         <li>
           <Link to='/counter'>Counter</Link>

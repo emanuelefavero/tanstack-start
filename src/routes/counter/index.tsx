@@ -22,8 +22,6 @@ function RouteComponent() {
 
   return (
     <>
-      <Link to='/'>Home</Link>
-
       <ServerCounter />
       <ClientCounter />
     </>

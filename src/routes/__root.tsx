@@ -6,6 +6,7 @@ import {
   Scripts,
 } from '@tanstack/react-router'
 import type { ReactNode } from 'react'
+import Header from '~/components/Header/Header'
 import appCss from '~/styles/app.css?url'
 
 export const Route = createRootRoute({
@@ -42,7 +43,8 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <HeadContent />
       </head>
       <body>
-        {children}
+        <Header />
+        <main>{children}</main>
         <Scripts />
       </body>
     </html>
