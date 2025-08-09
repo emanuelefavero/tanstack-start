@@ -3,7 +3,7 @@ import Counter from '~/components/Counter/Counter'
 import { getCount } from '~/server/count'
 
 export const Route = createFileRoute('/counter/')({
-  component: Component,
+  component: RouteComponent,
 
   // Data loader
   loader: async () => {
@@ -15,7 +15,7 @@ export const Route = createFileRoute('/counter/')({
   },
 })
 
-function Component() {
+function RouteComponent() {
   // TIP: If you need to load the `count` data directly inside this route:
   // const { count } = Route.useLoaderData()
 

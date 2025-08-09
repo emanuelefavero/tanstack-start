@@ -12,6 +12,9 @@ function Home() {
         <li>
           <Link to='/counter'>Counter</Link>
         </li>
+        <li>
+          <Link to='/shopping-cart-summary'>Shopping Cart Summary</Link>
+        </li>
       </ul>
     </>
   )
