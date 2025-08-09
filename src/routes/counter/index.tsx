@@ -22,6 +22,8 @@ function RouteComponent() {
 
   return (
     <>
+      <h1>Counter</h1>
+
       <ClientCounter />
       <ServerCounter />
     </>
